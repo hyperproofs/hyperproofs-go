@@ -1,0 +1,11 @@
+temp/*
+hyperproofs-go
+keygen/
+pkvk*/
+logs*.json*
+*result*.csv*
+plots/*.csv*
+plots/*.png*
+plots/*.pdf*
+plots/*.json*
+json-parse/*.json*
