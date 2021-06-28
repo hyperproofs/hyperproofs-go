@@ -6,6 +6,17 @@ import (
 	"github.com/alinush/go-mcl"
 )
 
+// Generate the trapdoors
+// Generate the keys for aggregation
+// PRK and UPK is generated only during runtime using GenUpkFake
+func (vcs *VCS) KeyGenFake(ncores uint8, L uint8, folder string, txnLimit uint64) {
+
+	NCORES = ncores // Maximum number threads created. Set this to number of available cores.
+	vcs.Init(L, folder, txnLimit)
+	vcs.TrapdoorsGen()
+	vcs.GenAggGipa()
+}
+
 func (vcs *VCS) KeyGenLoadFake(ncores uint8, L uint8, folder string, txnLimit uint64) {
 	NCORES = ncores
 	vcs.Init(L, folder, txnLimit)
