@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/alinush/go-mcl"
-	"github.com/sshravan/hyperproofs-go/vcs"
+	"github.com/hyperproofs/hyperproofs-go/vcs"
 )
 
 func main() {

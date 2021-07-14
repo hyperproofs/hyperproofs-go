@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	vc "github.com/sshravan/hyperproofs-go/vcs"
+	vc "github.com/hyperproofs/hyperproofs-go/vcs"
 )
 
 const FOLDER = "./pkvk-30"
