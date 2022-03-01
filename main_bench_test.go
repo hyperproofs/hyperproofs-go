@@ -6,6 +6,7 @@ import (
 	"math/rand"
 	"testing"
 
+	"github.com/QED-it/go-jubjub/pkg/pedersenhash"
 	"github.com/iden3/go-iden3-crypto/poseidon"
 	"golang.org/x/crypto/blake2b"
 )
@@ -74,6 +75,47 @@ func benchmarkBlake2b256(b *testing.B) {
 	})
 }
 
+func convert_bytes_to_bool(byteArray []byte) []bool {
+	X := make([]bool, len(byteArray)*8)
+	for _, in := range byteArray {
+		for i := 7; i > 0; i-- {
+			if in&(1<<i) > 0 {
+				X[i] = true
+			}
+		}
+	}
+	return X
+}
+
+func benchmarkPedersenHash(b *testing.B) {
+
+	datasize := 32
+	bytesX := make([]byte, datasize/2)
+	bytesY := make([]byte, datasize/2)
+	_, _ = rand.Read(bytesX)
+	_, _ = rand.Read(bytesY)
+	X := convert_bytes_to_bool(bytesX)
+	Y := convert_bytes_to_bool(bytesY)
+
+	hasher, _ := pedersenhash.NewPedersenHasher()
+	p, _ := hasher.PedersenHashForBits(X, Y)
+	bytesX = p.X().Bytes()
+	bytesY = p.Y().Bytes()
+
+	b.Run(fmt.Sprintf("Pedersen128;"), func(b *testing.B) {
+		b.ResetTimer()
+		for bn := 0; bn < b.N; bn++ {
+			b.StopTimer()
+			bytesX = p.X().Bytes()
+			bytesY = p.Y().Bytes()
+			X = convert_bytes_to_bool(bytesX)
+			Y = convert_bytes_to_bool(bytesY)
+			b.StartTimer()
+			p, _ = hasher.PedersenHashForBits(X, Y)
+		}
+	})
+}
+
 func BenchmarkHashing(b *testing.B) {
 	logarraysize := []int{6, 7}
 	for i := range logarraysize {
@@ -82,4 +124,5 @@ func BenchmarkHashing(b *testing.B) {
 	}
 	benchmarkPoseidon(b)
 	benchmarkBlake2b256(b)
+	benchmarkPedersenHash(b)
 }
