@@ -35,7 +35,7 @@ func BenchmarkVCSAgg(b *testing.B) {
 		var status bool
 		fmt.Println("Num txns: ", txns[len(txns)-1])
 
-		for iTxn := range txns[:3] {
+		for iTxn := range txns {
 			txn := txns[iTxn]
 			digest, indexVec, valueVec, _, proofVec, _ := vcs.GenProofsTreeFake(txn)
 			vcs.ResizeAgg(txn)

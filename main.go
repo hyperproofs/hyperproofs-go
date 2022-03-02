@@ -28,6 +28,7 @@ func main() {
 	_ = hyperGenerateKeys(L, true) // Uncomment this to generate UPK for a specific ell.
 
 	// Benchmark()
+	snarks_verifier()
 }
 
 func hyperGenerateKeys(L uint8, fake bool) *vcs.VCS {
