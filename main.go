@@ -27,7 +27,7 @@ func main() {
 	L = uint8(30)
 	_ = hyperGenerateKeys(L, true) // Uncomment this to generate UPK for a specific ell.
 
-	// Benchmark()
+	// Benchmark() // Uncomment this benchmark Commit and OpenAll.
 	snarks_verifier()
 }
 

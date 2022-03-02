@@ -52,7 +52,7 @@ func Benchmark() {
 
 	for itxn := range txns {
 		txnLimit := txns[itxn]
-		ell = []uint8{10, 20, 22, 24, 26}[:1]
+		ell = []uint8{10, 20, 22, 24, 26}
 		for i := range ell {
 			l := BenchmarkVCSCommit(ell[i], txnLimit)
 			logs = append(logs, l)
