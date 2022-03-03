@@ -21,7 +21,7 @@ func main() {
 	fmt.Println("Specific date and time is: ", dt.Format(time.UnixDate))
 
 	fmt.Println(vcs.SEP)
-	L := uint8(17)
+	L := uint8(26)
 	_ = hyperGenerateKeys(L, false) // Uncomment this to generate UPK for a specific ell.
 
 	L = uint8(30)
