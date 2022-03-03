@@ -7,7 +7,7 @@ import (
 	vc "github.com/hyperproofs/hyperproofs-go/vcs"
 )
 
-const FOLDER = "./pkvk-30"
+const FOLDER = "./pkvk-26"
 
 func BenchmarkVCSCommit(L uint8, txnLimit uint64) string {
 	N := uint64(1) << L
@@ -58,7 +58,7 @@ func Benchmark() {
 			logs = append(logs, l)
 		}
 
-		ell = []uint8{10, 20, 22, 24}[:1]
+		ell = []uint8{10, 20, 22, 24}
 		for i := range ell {
 			l := BenchmarkVCSOpenAll(ell[i], txnLimit)
 			logs = append(logs, l)

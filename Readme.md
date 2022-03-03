@@ -34,6 +34,7 @@ This repo depends on:
 
 1. Run ```time bash scripts/hyper-go.sh``` to setup PRK, VRK, UPK, etc.
 2. Run ```time bash scripts/hyper-bench.sh``` to replicate the benchmarks reported in the [paper][hyperproofs].
+   - Does not benchmark OpenAll and Commit by default. Uncomment the corresponding lines in the shell script to run the benchmarks.
 3. (Optional) Run ```time bash scripts/hyper-test.sh``` to run the test cases.
 ## Reference
 

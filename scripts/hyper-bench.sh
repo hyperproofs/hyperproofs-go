@@ -6,6 +6,14 @@ alias time='date; time'
 scriptdir=$(cd $(dirname $0); pwd -P)
 sourcedir=$(cd $scriptdir/..; pwd -P)
 
+# Micro benchmarks without OpenAll and Commit
 time go test -v ./vcs -bench=BenchmarkPrunedVCS -run=BenchmarkPrunedVCS -benchtime 4x -benchmem -timeout 10800m -json
-# Note: Benchtime has to be specified (Ex: 1x, 2x, 4x, 8x)
+
+# Benchmarks of Hyperproofs aggregation
 time go test -v ./vcs -bench=BenchmarkVCSAgg -run=BenchmarkVCSAgg -benchtime 2x -benchmem -timeout 360m -json
+
+# This computes the estimate verification time of SNARK based Merkle aggregation.
+go build && time ./hyperproofs-go 1
+
+# # WARNING: Benchmarking OpenAll and Commit takes around 6.5 hours.
+# go build && time ./hyperproofs-go 2 # This benchmarks OpenAll and Commit

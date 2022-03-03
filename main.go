@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 	"testing"
 	"time"
 
@@ -21,14 +22,22 @@ func main() {
 	fmt.Println("Specific date and time is: ", dt.Format(time.UnixDate))
 
 	fmt.Println(vcs.SEP)
-	L := uint8(26)
-	_ = hyperGenerateKeys(L, false) // Uncomment this to generate UPK for a specific ell.
 
-	L = uint8(30)
-	_ = hyperGenerateKeys(L, true) // Uncomment this to generate UPK for a specific ell.
+	args := os.Args
 
-	// Benchmark() // Uncomment this benchmark Commit and OpenAll.
-	snarks_verifier()
+	if len(args) == 1 {
+		L := uint8(26)
+		_ = hyperGenerateKeys(L, false)
+
+		L = uint8(30)
+		_ = hyperGenerateKeys(L, true)
+	} else {
+		if args[1] == "1" {
+			snarks_verifier()
+		} else {
+			Benchmark() // Uncomment this benchmark Commit and OpenAll.
+		}
+	}
 }
 
 func hyperGenerateKeys(L uint8, fake bool) *vcs.VCS {

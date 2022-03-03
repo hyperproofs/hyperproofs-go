@@ -124,5 +124,5 @@ func BenchmarkHashing(b *testing.B) {
 	}
 	benchmarkPoseidon(b)
 	benchmarkBlake2b256(b)
-	benchmarkPedersenHash(b)
+	// benchmarkPedersenHash(b)
 }
