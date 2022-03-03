@@ -86,10 +86,10 @@ def micro_macro_benchmarks_driver(filename):
 
 if __name__ == '__main__':
     print("Hello, World!")
-    df = hashing_benchmarks_driver()
-    print(df)
-    df = micro_macro_benchmarks_driver("micro-macro-more-runs.json")
-    print(df)
+    # df = hashing_benchmarks_driver()
+    # print(df)
+    # df = micro_macro_benchmarks_driver("micro-macro-more-runs.json")
+    # print(df)
     df = micro_macro_benchmarks_driver("micro-macro-1024txn.json")
     print(df)
 
