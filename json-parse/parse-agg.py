@@ -11,9 +11,18 @@ Will return with all golang's default columns: Time, Action, Package, Output, El
 def get_clean_json_as_df(filename):
     raw = []
     with open(filename, 'r') as f:
+        entry = {}
+        old_output = ""
         for line in f:
             if line.startswith("{"):
-                raw.append(json.loads(line))
+                entry = json.loads(line)
+                if "Output" in entry:
+                    if line.endswith('\\t"}\n'):
+                        old_output += entry["Output"]
+                    else:
+                        entry["Output"] = old_output + entry["Output"]
+                        raw.append(entry)
+                        old_output = ""
     df = pd.DataFrame(raw)
     return df
 
@@ -33,8 +42,8 @@ def get_only_measurements_rows(df):
     df = df["Output"].str.split(expand=True)
     df.columns = ["Testname", "Benchtime", "Time", "Time_Units",
                   "Memusage", "Memusage_Units", "Mallocs", "Mallocs_Units"]
-    df[["Testname", "cores"]] = df["Testname"].str.rsplit(
-        "-", expand=True)  # Split from the right of the str
+    # df[["Testname", "cores"]] = df["Testname"].str.rsplit(
+    #     "-", expand=True)  # Split from the right of the str
     return df
 
 
