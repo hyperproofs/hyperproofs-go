@@ -12,7 +12,7 @@ var NFILES uint8
 var NCORES uint8
 
 const MAX_AGG_SIZE = 1 << 19
-const SEP = "\n========================================================================================\n"
+const SEP = "\n========================================================================================"
 
 // Allocate space for UPK.
 // This is not done with Init, as UPK and PRK may not fit in memory together.

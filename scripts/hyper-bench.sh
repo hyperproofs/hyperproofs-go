@@ -14,7 +14,7 @@ time go test -v ./vcs -bench=BenchmarkPrunedVCS -run=BenchmarkPrunedVCS -benchti
 filepath="$sourcedir/json-parse/hyper-agg.json"
 time go test -v ./vcs -bench=BenchmarkVCSAgg -run=BenchmarkVCSAgg -benchtime 2x -benchmem -timeout 360m -json | tee $filepath
 outpath="$sourcedir/plots/hyperproofs-agg.csv"
-time python "$sourcedir/json-parse/parse-agg.py" $filepath $outpath
+time python3 "$sourcedir/json-parse/parse-agg.py" $filepath $outpath
 
 # This computes the estimate verification time of SNARK based Merkle aggregation.
 go build && time ./hyperproofs-go 1

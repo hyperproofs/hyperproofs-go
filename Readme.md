@@ -35,7 +35,7 @@ This repo depends on:
 1. Run ```time bash scripts/hyper-go.sh``` to setup PRK, VRK, UPK, etc.
 2. Run ```time bash scripts/hyper-bench.sh``` to replicate the benchmarks reported in the [paper][hyperproofs].
    - Does not benchmark OpenAll and Commit by default. Uncomment the [corresponding lines](https://github.com/hyperproofs/hyperproofs-go/blob/main/scripts/hyper-bench.sh#L23) in the shell script to run the benchmarks.
-3. Copy ```pedersen-30-single.csv``` and ```poseidon-30-single.csv``` from [bellman-bignat](https://github.com/hyperproofs/bellman-bignat) to [hyperproofs-go/plots](https://github.com/hyperproofs/hyperproofs-go/tree/main/plots). Then, run ```cd plots; time python gen-plots.py``` to generate the plots.
+3. Copy ```pedersen-30-single.csv``` and ```poseidon-30-single.csv``` from [bellman-bignat](https://github.com/hyperproofs/bellman-bignat) to [hyperproofs-go/plots](https://github.com/hyperproofs/hyperproofs-go/tree/main/plots). Then, run ```cd plots; time python3 gen-plots.py``` to generate the plots.
 ## Reference
 
 [_Hyperproofs: Aggregating and Maintaining Proofs in Vector Commitments_][hyperproofs]\
