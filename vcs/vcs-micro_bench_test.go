@@ -8,6 +8,8 @@ import (
 	"github.com/hyperproofs/gipa-go/batch"
 )
 
+var ell = []uint8{10, 30, 28, 26, 24, 22} // Change the tree height here
+
 // Microbenchmarks for UpdateAllProofs, Ver ,agg, veragg
 // Block size = 1024 transcations.
 func BenchmarkPrunedVCSMicro(b *testing.B) {
@@ -15,7 +17,6 @@ func BenchmarkPrunedVCSMicro(b *testing.B) {
 	mcl.InitFromString("bls12-381")
 	fmt.Println("Curve order", mcl.GetCurveOrder())
 
-	ell := []uint8{10, 22, 24, 26, 28, 30}
 	txns := []uint64{1024}
 
 	for loop := range ell {
@@ -30,7 +31,6 @@ func BenchmarkPrunedVCSMacro(b *testing.B) {
 	mcl.InitFromString("bls12-381")
 	fmt.Println("Curve order", mcl.GetCurveOrder())
 
-	ell := []uint8{10, 30, 28, 26, 24, 22}
 	txns := []uint64{1024}
 
 	for loop := range ell {
