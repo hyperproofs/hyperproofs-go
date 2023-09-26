@@ -23,7 +23,7 @@ This repo depends on:
    ```bash
    $ git clone https://github.com/herumi/mcl
    $ cd mcl/
-   $ git checkout 35a39d27 #herumi/mcl v1.35
+   $ git checkout caf27db2 #herumi/mcl v1.86.0
    $ cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
    $ cmake --build build
    $ sudo cmake --build build --target install
@@ -31,7 +31,7 @@ This repo depends on:
    ```
 
 ### Hyperproofs
-
+0. See [v1.0.0](https://github.com/hyperproofs/hyperproofs-go/tree/51cc725b150c839987c26a3edf89fc2808fe4231) for the USENIX 2022 version
 1. Run ```time bash scripts/hyper-go.sh``` to setup PRK, VRK, UPK, etc.
 2. Run ```time bash scripts/hyper-bench.sh``` to replicate the benchmarks reported in the [paper][hyperproofs].
    - Does not benchmark OpenAll and Commit by default. Uncomment the [corresponding lines](https://github.com/hyperproofs/hyperproofs-go/blob/main/scripts/hyper-bench.sh#L23) in the shell script to run the benchmarks.
