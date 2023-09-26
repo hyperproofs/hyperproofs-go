@@ -9,3 +9,4 @@ plots/*.png*
 plots/*.pdf*
 plots/*.json*
 json-parse/*.json*
+.history/
