@@ -14,20 +14,20 @@ This repo depends on:
 ### Software requirements
 - Install golang, python
    ```bash
-    $ sudo apt-get install git python curl python3-pip libgmp-dev libflint-dev
-    $ sudo add-apt-repository ppa:longsleep/golang-backports
-    $ sudo apt-get install golang golang-go golang-doc golang-golang-x-tools
-    $ pip3 install -U pip pandas matplotlib
+   $ sudo apt-get install git python curl python3-pip libgmp-dev libflint-dev
+   $ sudo add-apt-repository ppa:longsleep/golang-backports
+   $ sudo apt-get install golang golang-go golang-doc golang-golang-x-tools
+   $ pip3 install -U pip pandas matplotlib
    ```
 - Install ```mcl```
    ```bash
-    $ git clone https://github.com/herumi/mcl
-    $ cd mcl/
-    $ git checkout 35a39d27 #herumi/mcl v1.35
-    $ cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-    $ cmake --build build
-    $ sudo cmake --build build --target install
-    $ sudo ldconfig
+   $ git clone https://github.com/herumi/mcl
+   $ cd mcl/
+   $ git checkout 35a39d27 #herumi/mcl v1.35
+   $ cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+   $ cmake --build build
+   $ sudo cmake --build build --target install
+   $ sudo ldconfig
    ```
 
 ### Hyperproofs
