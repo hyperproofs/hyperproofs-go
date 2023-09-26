@@ -1,9 +1,9 @@
 package main
 
 import (
+	"crypto/rand"
 	"fmt"
 	"math/big"
-	"math/rand"
 	"testing"
 
 	"github.com/QED-it/go-jubjub/pkg/pedersenhash"
@@ -42,9 +42,9 @@ func benchmarkPoseidon(b *testing.B) {
 		for bn := 0; bn < b.N; bn++ {
 			b.StopTimer()
 			_, _ = rand.Read(bytes)
-			A := poseidon.HashBytes(bytes)
+			A, _ := poseidon.HashBytes(bytes)
 			_, _ = rand.Read(bytes)
-			B := poseidon.HashBytes(bytes)
+			B, _ := poseidon.HashBytes(bytes)
 			array := []*big.Int{A, B}
 			b.StartTimer()
 
