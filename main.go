@@ -27,8 +27,8 @@ func main() {
 
 	if len(args) == 1 {
 		var L uint8
-		L = uint8(26)
-		_ = hyperGenerateKeys(L, false)
+		// L = uint8(26)
+		// _ = hyperGenerateKeys(L, false)
 
 		L = uint8(30)
 		_ = hyperGenerateKeys(L, true)

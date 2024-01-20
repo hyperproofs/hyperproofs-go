@@ -52,13 +52,13 @@ func Benchmark() {
 
 	for itxn := range txns {
 		txnLimit := txns[itxn]
-		ell = []uint8{10, 20, 22, 24, 26} // Change the tree height here
+		ell = []uint8{10, 21, 23, 25, 27} // Change the tree height here
 		for i := range ell {
 			l := BenchmarkVCSCommit(ell[i], txnLimit)
 			logs = append(logs, l)
 		}
 
-		ell = []uint8{10, 20, 22, 24} // Change the tree height here
+		ell = []uint8{10, 21, 23, 25} // Change the tree height here
 		for i := range ell {
 			l := BenchmarkVCSOpenAll(ell[i], txnLimit)
 			logs = append(logs, l)

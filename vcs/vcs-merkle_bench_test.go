@@ -16,7 +16,7 @@ func BenchmarkVCSAgg(b *testing.B) {
 	fmt.Println("Curve order", mcl.GetCurveOrder())
 	var L uint8
 
-	ell := []uint8{30} // Change the tree height here
+	ell := []uint8{27} // Change the tree height here
 	txnExpo := []uint8{3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}
 	txns := make([]uint64, len(txnExpo))
 	for i := range txnExpo {

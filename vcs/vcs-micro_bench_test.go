@@ -8,7 +8,7 @@ import (
 	"github.com/hyperproofs/gipa-go/batch"
 )
 
-var ell = []uint8{10, 30, 28, 26, 24, 22} // Change the tree height here
+var ell = []uint8{10, 27, 25, 23, 21} // Change the tree height here
 
 // Microbenchmarks for UpdateAllProofs, Ver ,agg, veragg
 // Block size = 1024 transcations.
