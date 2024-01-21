@@ -8,7 +8,7 @@ sourcedir=$(cd $scriptdir/..; pwd -P)
 
 # Micro benchmarks without OpenAll and Commit
 filepath="$sourcedir/json-parse/micro-macro-1024txn.json"
-time go test -v ./vcs -bench=BenchmarkPrunedVCS -run=BenchmarkPrunedVCS -benchtime 4x -benchmem -timeout 10800m -json | tee $filepath
+time go test -v ./vcs -bench=BenchmarkPrunedVCS -run=BenchmarkPrunedVCS -benchtime= 1x -benchmem -timeout 10800m -json | tee $filepath
 
 # Benchmarks of Hyperproofs aggregation
 filepath="$sourcedir/json-parse/hyper-agg.json"
