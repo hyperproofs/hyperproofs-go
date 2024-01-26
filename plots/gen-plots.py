@@ -55,8 +55,11 @@ def hyperproofs_aggregation(file, columns_list):
     df['time'] = df['time'] / 10**9
     df = df.pivot(index="numleaves", columns="operation", values="time")
     df = df.rename(columns={file[1]: file[2]})
+    df.index = df.index.str.replace('-32', '')
+    df.index = df.index.str.replace('-64', '')
+    df.index = df.index.astype(int)
     df = df[[file[2]]]
-    # print(df)
+
     return df
 
 
@@ -146,6 +149,7 @@ def merkle_aggregations_verifier(filename):
 def agg_verify_plot(df):
 
     df_c = df[:]
+    df_c = df_c.sort_index()
     df_c.index = np.log2(df_c.index).astype(int)
 
     plt.rcParams.update(rcParams)
@@ -187,10 +191,8 @@ def agg_end_to_end_plot(pDf, vDf):
 
     df_c["Hyperproofs"] = df_c["Hyperproofs"] + df_v["Hyperproofs"]
     df_c["Merkle (Poseidon)"] = df_c["Merkle (Poseidon)"] + df_v["Merkle"]
-    df_c["Merkle (Pedersen)"] = df_c["Merkle (Pedersen)"] + df_v["Merkle"]
 
     df_b["Merkle (Poseidon) (extrapolated)"] += df_v["Merkle"]
-    df_b["Merkle (Pedersen) (extrapolated)"] += df_v["Merkle"]
 
     plt.rcParams.update(rcParams)
     f, ax = plt.subplots(figsize=(12, 9))
@@ -227,8 +229,7 @@ if __name__ == '__main__':
                     "paramgen", "synth", "prover", "verifier"]
     folder = "./"
     files = [
-        ("poseidon-30-single.csv", "prover", "Merkle (Poseidon)"),
-        ("pedersen-30-single.csv", "prover", "Merkle (Pedersen)")
+        ("poseidon-27-single.csv", "prover", "Merkle (Poseidon)"),
     ]
     files = [("{}{}".format(folder, x[0]), x[1], x[2]) for x in files]
     df1 = merkle_aggregations_prover(files, columns_list)
@@ -238,6 +239,7 @@ if __name__ == '__main__':
         folder, "hyperproofs-agg.csv"), "Prove", "Hyperproofs"), hp_columns_list)
 
     proveDf = pd.concat([df2, df1], axis=1)
+    proveDf = proveDf.sort_index()
     agg_prove_plot(proveDf)
 
     df3 = hyperproofs_aggregation(("{}{}".format(
@@ -247,6 +249,7 @@ if __name__ == '__main__':
         folder, "benchmarking-snarks-verifier.json"))
 
     verifyDf = pd.concat([df3, df4], axis=1)
+    verifyDf = verifyDf.sort_index()
     agg_verify_plot(verifyDf)
 
     agg_end_to_end_plot(proveDf, verifyDf)
